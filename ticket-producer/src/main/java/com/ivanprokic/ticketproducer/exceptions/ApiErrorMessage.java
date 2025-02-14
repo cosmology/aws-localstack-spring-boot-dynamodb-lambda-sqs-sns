@@ -2,7 +2,7 @@ package com.ivanprokic.ticketproducer.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.time.Clock;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +16,6 @@ public class ApiErrorMessage {
   private int status = 200;
   private String error = "";
   private String message = "";
-  private LocalDateTime timestamp = LocalDateTime.now(Clock.systemUTC());
+  private OffsetDateTime timestamp = OffsetDateTime.now(Clock.systemUTC());
   private String path = "";
 }

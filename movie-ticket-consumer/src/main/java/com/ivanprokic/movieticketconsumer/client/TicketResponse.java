@@ -1,5 +1,6 @@
 package com.ivanprokic.movieticketconsumer.client;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
-public record TicketResponse(String id, String eventType, String title, Date publishedAt) {}
+public record TicketResponse(
+    String id, String eventType, String title, OffsetDateTime publishedAt) {}

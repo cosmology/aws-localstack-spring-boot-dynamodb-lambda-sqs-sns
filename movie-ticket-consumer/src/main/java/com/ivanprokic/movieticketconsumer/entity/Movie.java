@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Movie {
 
   @Id

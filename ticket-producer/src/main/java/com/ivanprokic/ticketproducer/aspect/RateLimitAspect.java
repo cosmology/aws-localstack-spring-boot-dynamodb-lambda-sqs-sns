@@ -3,6 +3,7 @@ package com.ivanprokic.ticketproducer.aspect;
 import com.ivanprokic.ticketproducer.exceptions.RateLimitException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -17,7 +18,9 @@ public class RateLimitAspect {
 
   public static final String ERROR_MESSAGE =
       "To many request at endpoint %s from IP %s! Please try again after %d milliseconds!";
-  private final ConcurrentHashMap<String, List<Long>> requestCounts = new ConcurrentHashMap<>();
+
+  // code to the interface, use Map
+  private final Map<String, List<Long>> requestCounts = new ConcurrentHashMap<>();
 
   @Value("${TICKET_PRODUCER_RATE_LIMIT:#{20}}")
   private int rateLimit;

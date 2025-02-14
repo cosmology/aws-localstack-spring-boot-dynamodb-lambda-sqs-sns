@@ -1,7 +1,8 @@
 package com.ivanprokic.ticketproducer.service;
 
 import com.ivanprokic.ticketproducer.model.Ticket;
-import java.time.LocalDate;
+import java.time.Clock;
+import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -34,11 +35,12 @@ public class RandomTicketGenerator {
     return "unknown"; // Default if no match is found
   }
 
-  private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("EEE, MMM d");
+  private static final DateTimeFormatter DATETIME_FORMATTER =
+      DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
 
   private static String generateEvent(String description, int daysFromNow) {
-    LocalDate eventDate = LocalDate.now().plusDays(daysFromNow);
-    return description + " - " + eventDate.format(DATE_FORMAT);
+    OffsetDateTime eventDate = OffsetDateTime.now(Clock.systemUTC()).plusDays(daysFromNow);
+    return description + " - " + eventDate.format(DATETIME_FORMATTER);
   }
 
   private static final List<String> TITLES =
